@@ -532,7 +532,7 @@ case when lifespan =0 then total_sales
 else round(total_sales / lifespan,1) end as avg_monthly_sales
 from customer_aggregation;
 
-select * from gold.
+select * from gold.customer_report;
 
 /*
 ===================================================================================
@@ -619,3 +619,4 @@ else round(total_sales/lifespan,1) end as avg_monthly_revenue
 from products_aggregation;
 
 select * from gold.product_report ;
+
