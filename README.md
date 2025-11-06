@@ -8,19 +8,6 @@ This project provides an end-to-end analysis of e-commerce sales data spanning m
 
 ---
 
-## 🗂️ Database Schema  
-
-### **Customer Table**  
-`customer_key`, `customer_id`, `customer_number`, `first_name`, `last_name`, `country`, `marital_status`, `gender`, `birthdate`, `create_date`
-
-### **Products Table**  
-`product_key`, `product_id`, `product_number`, `product_name`, `category_id`, `category`, `subcategory`, `maintenance`, `cost`, `product_line`, `start_date`
-
-### **Sales Table**  
-`order_number`, `product_key`, `customer_key`, `order_date`, `shipping_date`, `due_date`, `sales_amount`, `quantity`, `price`
-
----
-
 ## 💼 Business Questions
 
 ### **Exploratory Data Analysis (EDA)**
