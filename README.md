@@ -14,8 +14,7 @@ This project provides an end-to-end analysis of e-commerce sales data spanning m
 
 ### **Exploratory Data Analysis (EDA)**
 
-**1. Database Exploration**
-- Explore all database objects, tables, columns, and schema structure to understand data architecture
+**1. Database Exploration**:Explore all database objects, tables, columns, and schema structure to understand data architecture
 
 **2. Dimension Exploration**
 - Identify all unique countries from which customers originate and analyze complete product category hierarchy
