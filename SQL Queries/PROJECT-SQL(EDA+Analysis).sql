@@ -328,20 +328,26 @@ order by extract(year from order_date);
 
 
 --2. CUMULATIVE ANALYSIS :
---calculate the total sales per-month and running total of sales over time and moving avg price
+-- 2) CUMULATIVE ANALYSIS :calculate the total sales per-month and running total of sales over time and moving avg
+With cte as (
+select
+extract(year from order_date) as order_year,
+extract(month from order_date) as order_month,
+TO_CHAR(order_date, 'Month') AS month_name,
+sum(sales) as total_sales,
+round(avg(sales)) as avg_sales
+from sales.orders
+group by extract(year from order_date),extract(month from order_date),TO_CHAR(order_date, 'Month')
+)
 select 
-order_date,
+order_year,
+order_month,
+month_name,
 total_sales,
-sum(total_sales) over (order by order_date) as running_total_sales,
-round(avg(avg_price) over (order by order_date),2) as moving_average_price
-from (
-     select 
-	 extract (year from order_date) as order_year,
-	 sum(sales_amount) as total_sales,
-	 avg(price) as avg_price
-	 from gold.sales
-	 where order_date is not null 
-	 group by extract (year from order_date)t;
+avg_sales,
+sum(total_Sales) over(order by order_year,order_month) as running_monthly_sales,
+round(avg(avg_sales) over(order by order_year,order_month)) as running_monthly_avg
+from cte;
 
 --3. PERFORMANCE ANALYSIS :
 --QTS:Analyze the early performance of products by comparing each products sales  to both 
@@ -619,4 +625,5 @@ else round(total_sales/lifespan,1) end as avg_monthly_revenue
 from products_aggregation;
 
 select * from gold.product_report ;
+
 
